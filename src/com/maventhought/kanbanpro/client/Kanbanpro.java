@@ -33,8 +33,7 @@ public class Kanbanpro implements EntryPoint {
 	 * Create a remote service proxy to talk to the server-side Greeting
 	 * service.
 	 */
-	private final GreetingServiceAsync greetingService = GWT
-			.create(GreetingService.class);
+	private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
 	/**
 	 * This is the entry point method.
@@ -78,43 +77,23 @@ public class Kanbanpro implements EntryPoint {
 			 */
 			private void sendNameToServer() {
 
-				String url = "http://www.agilezen.com/api/v1/projects";
-				
-				RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, URL.encode(url));
-
-				builder.setHeader("X-Zen-ApiKey", "1e6a8c37496144f1ba42a7f86b6f693f");
-
 				dialogVPanel.clear();
 
-				try {
-					Request request = builder.sendRequest(null,
-							new RequestCallback() {
-								public void onError(Request request,
-										Throwable exception) {
-									// Couldn't connect to server (could be
-									// timeout, SOP violation, etc.)
-									displayError("Could not connect");
-								}
+				greetingService.greetServer("Jose",
+						new AsyncCallback<String>() {
 
-								public void onResponseReceived(Request request,
-										Response response) {
-									if (200 == response.getStatusCode()) {
-										dialogVPanel.add(new Label(response
-												.getText()));
-									} else {
-										// Handle the error. Can get the status
-										// text from response.getStatusText()
-										displayError("Status code obtained " + response.getStatusCode());
-										displayError("Error with the status code ##->" + response.getStatusText() + "<-##");
-									}
-								}
+							@Override
+							public void onFailure(Throwable caught) {
+								displayError(caught.getMessage());
+							}
 
-							});
-				} catch (Exception e) {
-					// Couldn't connect to server
-					displayError(e.getMessage());
-
-				}
+							@Override
+							public void onSuccess(String result) {
+								dialogVPanel.add(new Label(result));
+							}
+						});
+				
+				
 			}
 
 			private void displayError(String error) {
