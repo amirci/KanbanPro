@@ -79,8 +79,8 @@ public class Kanbanpro implements EntryPoint {
 
 				dialogVPanel.clear();
 
-				greetingService.greetServer("Jose",
-						new AsyncCallback<String>() {
+				greetingService.getProjects(
+						new AsyncCallback<Iterable<Project>>() {
 
 							@Override
 							public void onFailure(Throwable caught) {
@@ -88,8 +88,12 @@ public class Kanbanpro implements EntryPoint {
 							}
 
 							@Override
-							public void onSuccess(String result) {
-								dialogVPanel.add(new Label(result));
+							public void onSuccess(Iterable<Project> projects) {
+								
+								for(Project project: projects){
+									dialogVPanel.add(new Label(project.getName()));
+								}
+								
 							}
 						});
 				
