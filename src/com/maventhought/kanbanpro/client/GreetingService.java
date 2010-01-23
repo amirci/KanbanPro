@@ -8,5 +8,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("greet")
 public interface GreetingService extends RemoteService {
-	Iterable<Project> getProjects();
+	Iterable<Project> getProjects() throws Exception;
 }

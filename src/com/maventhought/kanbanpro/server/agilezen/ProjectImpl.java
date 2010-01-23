@@ -13,7 +13,6 @@ public class ProjectImpl implements Project {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
