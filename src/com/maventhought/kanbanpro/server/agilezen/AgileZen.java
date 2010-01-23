@@ -36,7 +36,12 @@ public class AgileZen {
 			
 			String response = method.getResponseBodyAsString();
 			
-			unm.unmarshal(new StringReader(response));
+			// Skip first byte
+			Projects projectList = (Projects) unm.unmarshal(new StringReader(response.substring(1)));
+			
+			for(Project project : projectList.getItem().getProjects()){
+				projects.add(project);
+			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

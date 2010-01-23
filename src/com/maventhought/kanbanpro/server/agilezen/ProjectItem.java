@@ -4,13 +4,13 @@ import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name="Item")
+@XmlType(name="items")
 public class ProjectItem {
 
-	@XmlElementWrapper
-	@XmlElement(name="Projects")
+	
+	@XmlElement(name="project")
 	private Collection<ProjectImpl> projects;
 
 	public Iterable<ProjectImpl> getProjects() {
