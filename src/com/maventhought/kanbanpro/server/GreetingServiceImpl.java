@@ -11,7 +11,7 @@ import com.maventhought.kanbanpro.server.agilezen.AgileZen;
 @SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
-	public Iterable<Project> getProjects() throws Exception {
+	public Iterable<Project> getProjects() {
 		return new AgileZen().getProjects();
 	}
 }
