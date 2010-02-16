@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<!--
+    GWT-Maven archetype generated POM
+  -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.bookedin</groupId>
+	<artifactId>bam</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>gwt-maven-archetype-project</name>
+
+	<properties>
+
+		<!-- convenience to define GWT version in one place -->
+		<gwt.version>2.0.0</gwt.version>
+
+		<!--  tell the compiler we can use 1.5 -->
+		<maven.compiler.source>1.5</maven.compiler.source>
+		<maven.compiler.target>1.5</maven.compiler.target>
+
+	</properties>
+
+	<dependencies>
+
+		<!--  GWT dependencies (from central repo) -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwt.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!--
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+            <classifier>${platform}</classifier>
+            <scope>provided</scope>
+        </dependency>
+		-->
+		
+		<!--
+		<dependency>
+			<groupId>net.customware.gwt.dispatch</groupId>
+			<artifactId>gwt-dispatch</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.customware.gwt.presenter</groupId>
+			<artifactId>gwt-presenter</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.code.juice</groupId>
+			<artifactId>guice</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.gwt.inject</groupId>
+			<artifactId>gin</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.juice</groupId>
+			<artifactId>guice-servlet</artifactId>
+			<version>2.0</version>
+		</dependency>
+		-->
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-maven-plugin</artifactId>
+			<version>2.4-rc2</version>
+		</dependency>
+
+		<!-- test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<pluginRepositories>
+		<pluginRepository>
+		  <id>gwt-maven</id>
+		  <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo</url>
+		</pluginRepository>
+	</pluginRepositories>
+    
+	<repositories>
+		<repository>
+		  <id>gwt-maven</id>
+		  <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
+		</repository>        
+ 		<repository>
+            <id>maven-repos</id>
+            <url>http://repo2.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/2/</url>
+        </repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>1.2</version>
+				<executions>
+				  <execution>
+					<goals>
+					  <goal>compile</goal>
+					</goals>
+				  </execution>
+				</executions>
+				<configuration>
+				  <runTarget>com.mycompany.gwt.Module/Module.html</runTarget>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+				  <warSourceDirectory>war</warSourceDirectory>
+				  <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+				</configuration>
+			</plugin>			
+		</plugins>
+	</build>
+
+</project>
